@@ -19,6 +19,26 @@ The operational framework maps the real-time physical parameters of the Olkaria 
 
 
 ## 3. Project Objectives
-1. To develop a reference thermodynamic model for a double-flash geothermal power plant under off-design operating conditions 
-2. To optimize operating parameters of the developed model using multi-objective optimization framework for optimal net power output and exergy efficiency.
-3. To compare the baseline plant operation with numerical simulation data under variable operating conditions. 
+## 3. Core Research Objectives
+
+The project is structured around five sequential, highly interconnected technical objectives designed to bridge the gap between theoretical steady-state design and actual variable plant operations:
+
+### Objective 1: Comprehensive Data Engineering and Statistical Baseline Profiling
+* **Scope:** Clean, parse, split, and synchronize the multi-year raw industrial logging sheets for Generator Units 1, 2, and 3. Eliminate structural headers, resolve positional index shifts, and establish clean `datetime64` timelines.
+* **Deliverable:** Quantify the exact capacity factor deficits, off-design volatility coefficients, and derated search boundaries across independent units to build a robust empirical baseline for model validation.
+
+### Objective 2: Computational Thermodynamic Modeling and Exergy Derivation
+* **Scope:** Build a high-fidelity mathematical and physical simulation model of the single-flash and expanded double-flash geothermal cycles in Python. Integrate international formulation standard steam tables (`pyXSteam` / `iapws`) to calculate precise enthalpy ($h$), entropy ($s$), and irreversibility deltas ($I = T_0 \cdot S_{gen}$).
+* **Deliverable:** Mathematically derive and calculate the plant's true continuous **Exergy Efficiency ($\eta_{ex}$)** to serve as the ultimate optimization target variable alongside raw electrical power output.
+
+### Objective 3: Multi-Output Neural Network (ANN) Surrogate Model Development
+* **Scope:** Design and train an optimized feedforward Multi-Layer Perceptron (MLP) Neural Network for each generator. The network acts as a data-driven surrogate model, learning the complex, non-linear thermodynamic mapping from input operating conditions (mass flows, temperatures, pressures) to output metrics.
+* **Deliverable:** Replace expensive, computationally heavy thermodynamic equations with a sub-millisecond neural network forward pass capable of predicting power output ($MW$) and exergy efficiency ($\%$) with high precision ($R^2 > 0.95$).
+
+### Objective 4: NSGA-II Multi-Objective Optimization and Pareto Frontier Generation
+* **Scope:** Implement the Non-dominated Sorting Genetic Algorithm II (NSGA-II) using the trained ANN surrogate as the multi-objective fitness evaluation function. Define the decision variable boundaries (HP/LP separator pressures, turbine chest pressure, inlet flow rates) based on observed derated states.
+* **Deliverable:** Generate a dense, well-distributed **Pareto-Optimal Frontier** representing the optimal trade-offs between maximizing total net power output ($MW$) and maximizing plant exergy efficiency ($\%$). This frontier serves as the logical backbone for dynamic, adaptive low-pressure flash switching control.
+
+### Objective 5: Predictive Maintenance and Multi-Component Fault Diagnostics
+* **Scope:** Develop independent machine learning diagnostic pipelines (utilizing sequential LSTM networks or unsupervised Autoencoders) to track and identify localized equipment degradation signals.
+* **Deliverable:** Detect early-warning operational thresholds for (a) steam purity degradation via real-time conductivity tracking to mitigate turbine blade scaling, (b) inlet nozzle blockages via absolute left-hand/right-hand temperature divergence calculations ($|LH - RH|$), and (c) condenser performance decay via exhaust vacuum back-pressure drifts.
