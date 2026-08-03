@@ -1,6 +1,27 @@
 # AI Geothermal Optimization for double-flash plants
 An Artificial Intelligence-Based Predictive Multi-Objective Optimization Framework for Double-Flash Geothermal Power Plants: Case of Olkaria Operating Conditions
 
+## Reproducible pipeline
+
+From the repository root, run:
+
+```bash
+./venv/bin/python -m src.pipeline
+./venv/bin/python -m src.train_surrogate
+./venv/bin/python -m unittest discover -s tests -v
+```
+
+The first command rebuilds and validates the engineered dataset. The second
+trains mean, ridge, random-forest, and compact ANN models independently for each
+generator using source-order 70/15/15 train/validation/test blocks. Model inputs
+exclude current-load-derived efficiency ratios and other target leakage.
+
+Important data limitation: the source workbook contains repeated daily readings,
+six non-monotonic date transitions, and four suspect rows dated after 2019. The
+pipeline therefore retains an `observation_id` and uses original workbook row
+order for chronological splitting. See `data/processed/validation_report.json`
+and `reports/model_metrics.csv` before interpreting model accuracy.
+
 
 # Project Description and Research Objectives
 

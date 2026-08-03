@@ -1,0 +1,71 @@
+{
+  "gen1": {
+    "train": {
+      "rows": 128,
+      "observation_id_start": 4,
+      "observation_id_end": 131,
+      "start": "2018-01-12",
+      "end": "2023-11-28"
+    },
+    "validation": {
+      "rows": 27,
+      "observation_id_start": 132,
+      "observation_id_end": 158,
+      "start": "2019-01-13",
+      "end": "2019-12-01"
+    },
+    "test": {
+      "rows": 28,
+      "observation_id_start": 159,
+      "observation_id_end": 186,
+      "start": "2019-01-03",
+      "end": "2019-12-03"
+    }
+  },
+  "gen2": {
+    "train": {
+      "rows": 127,
+      "observation_id_start": 4,
+      "observation_id_end": 131,
+      "start": "2018-01-12",
+      "end": "2023-11-28"
+    },
+    "validation": {
+      "rows": 27,
+      "observation_id_start": 132,
+      "observation_id_end": 158,
+      "start": "2019-01-13",
+      "end": "2019-12-01"
+    },
+    "test": {
+      "rows": 28,
+      "observation_id_start": 159,
+      "observation_id_end": 186,
+      "start": "2019-01-03",
+      "end": "2019-12-03"
+    }
+  },
+  "gen3": {
+    "train": {
+      "rows": 128,
+      "observation_id_start": 4,
+      "observation_id_end": 131,
+      "start": "2018-01-12",
+      "end": "2023-11-28"
+    },
+    "validation": {
+      "rows": 27,
+      "observation_id_start": 132,
+      "observation_id_end": 158,
+      "start": "2019-01-13",
+      "end": "2019-12-01"
+    },
+    "test": {
+      "rows": 28,
+      "observation_id_start": 159,
+      "observation_id_end": 186,
+      "start": "2019-01-03",
+      "end": "2019-12-03"
+    }
+  }
+}
